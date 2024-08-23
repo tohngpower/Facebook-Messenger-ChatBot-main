@@ -7,11 +7,14 @@ const { sendMessage, setTypingOff, setTypingOn } = require('../helper/messengerA
 
 router.post('/', async (req, res) => {
   try {
+    console.log(req.body)
     let body = req.body;
     let senderId = body.senderId;
     let query = body.query;
     await setTypingOn(senderId);
     let result = await chatCompletion(query);
+    console.log(result.response)
+    
     await sendMessage(senderId, result.response);
     await setTypingOff(senderId);
     console.log(senderId);

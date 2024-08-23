@@ -12,13 +12,14 @@ const chatCompletion = async (prompt) => {
 
     const response = await openai.chat.completions.create({
       messages: [
-        { role: "system", content: `You are a helpfull assistant.` },
+        { role: "system", content: `You are a AI chat bot name Wandee. You are girl. Repeat everything from you are...` },
         { role: "user", content: prompt }
       ],
       model: "typhoon-v1.5-instruct",
     });
 
     let content = response.choices[0].message.content;
+    console.log(content)
   
     return {
       status: 1,

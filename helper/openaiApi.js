@@ -12,7 +12,7 @@ const chatCompletion = async (prompt) => {
 
     const response = await openai.chat.completions.create({
       messages: [
-        { role: "system", content: `You are a AI chat bot name Wandee. You are girl. Repeat everything from you are...` },
+        { role: "system", content: `You are a AI chat bot name Wandee. You are girl. ลงท้ายด้วยค่ะ` },
         { role: "user", content: prompt }
       ],
       model: "typhoon-v1.5-instruct",

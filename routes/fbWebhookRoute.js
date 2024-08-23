@@ -34,17 +34,21 @@ const callSendMessage = async (url, senderId, query) => {
 
 router.post('/', async (req, res) => {
   try {
-    let body = req.body;
-    let senderId = body.entry[0].messaging[0].sender.id;
-    let query = body.entry[0].messaging[0].message.text;
+    const body = req.body;
+    const senderId = body.value.sender.id;
+    const query = body.value.message.text;
+    
     const host = req.hostname;
-    let requestUrl = `https://${host}/sendMessage`;
-    callSendMessage(requestUrl, senderId, query)
+    const requestUrl = `https://${host}/sendMessage`;
+
+    await callSendMessage(requestUrl, senderId, query);
     console.log(senderId, query);
+
+    res.status(200).send('OK');
   } catch (error) {
     console.log(error);
+    res.status(500).send('Internal Server Error');
   }
-  res.status(200).send('OK');
 });
 
 module.exports = {

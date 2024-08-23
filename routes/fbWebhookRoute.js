@@ -40,6 +40,7 @@ router.post('/', async (req, res) => {
     
     const host = req.hostname;
     const requestUrl = `https://${host}/sendMessage`;
+    console.log(host);
 
     await callSendMessage(requestUrl, senderId, query);
     console.log(senderId, query);

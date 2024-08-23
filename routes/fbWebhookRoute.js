@@ -3,7 +3,7 @@ const router = express.Router();
 require('dotenv').config();
 const axios = require("axios").default;
 
-router.get('/', (req, res) => {
+router.get('/webhooks', (req, res) => {
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
   let challenge = req.query['hub.challenge'];
